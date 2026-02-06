@@ -21,4 +21,14 @@ let item2 = arrC[1];
 console.log(item1, item2); 
   
 arrC[0] = "hello"; 
-console.log(arrC); 
+console.log(arrC);
+
+
+
+
+let array2 = new Array();
+array2.push ("재원");
+console.log(array2);
+
+arrC.push(10);
+console.log(arrC);

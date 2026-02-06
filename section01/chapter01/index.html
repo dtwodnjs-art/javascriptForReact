@@ -4,9 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
- <script src="./chapter30.js"></script>
+ <script>
+   function onClick(){
+      const $ul = document.getElementById("ul");
+     
+let today = new Date();
+let startTime = today.getMilliseconds();
+      for (let i = 0; i < 300; i++) {
+         $ul.innerHTML = $ul.innerHTML + `<li>${i}</li>`
+         
+      }
+      let stopTime = today.getMilliseconds();
+      console.log(`걸리는시간: ${stopTime-startTime}`);
+
+   }
+
+
+
+   function onClick2(){
+      const $ul = document.getElementById("ul");
+     
+let listValue = "";
+
+      for (let i = 0; i < 1000; i++) {
+         listValue = listValue + `<li>${i}</li>`
+         
+      }
+     $ul.innerHTML = listValue;
+
+   }
+
+
+
+ </script>
 </head>
 <body>
    <h2 on>안녕하세요</h2>
+   <button type="button" onclick="onClick()">(실제돔)리스트추가하기</button>
+   <button type="button" onclick="onClick2()">(가상돔)리스트추가하기</button>
+   <ul id ="ul"></ul>
 </body>
 </html>

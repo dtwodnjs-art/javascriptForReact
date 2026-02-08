@@ -1,0 +1,45 @@
+// 1. 상수 객체 
+const animal = { 
+type: "고양이", 
+name: "나비", 
+color: "black", 
+}; 
+//상수인 animal 에 새로운 객체를 대입하면 안됨.  
+//animal ={ 
+//name: "호랑이" 
+//} 
+animal.age = 2;          
+// 추가가능 
+animal.name = "까망이"; // 수정가능 
+delete animal.color;   
+console.log(animal); 
+
+// 2.메서드
+//값이 함수인 프로퍼티를 말함
+const person = {
+ name: "홍길동",
+ // 메서드 선언
+ sayHi() {
+ console.log("안녕!");
+},
+//익명함수 가능
+sayHi2 : function() {
+ console.log("안녕2!");
+},
+//화살표함수 가능
+sayHi3 : ()=> {
+ console.log("안녕3!");
+},
+};
+person.sayHi();
+person["sayHi"](); //괄호표기법으로 함수 호출가능하다.
+
+const person1 = {
+  name: "홍길동",
+  sayHi() {
+    // 'this'는 현재 이 함수를 실행하고 있는 객체(person)를 가리킵니다.
+    console.log(`안녕! 내 이름은 ${this.name}이야.`);
+  }
+};
+
+person1.sayHi(); // 출력: "안녕! 내 이름은 홍길동이야."

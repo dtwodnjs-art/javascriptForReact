@@ -1,0 +1,12 @@
+.ScoreItem {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1.2fr 0.7fr;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+  text-align: center;
+  align-items: center;
+}
+.ScoreItem button { background-color: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+.col_name { font-weight: bold; color: #1e293b; }
+.col_total { font-weight: bold; color: #3b82f6; }
+.col_avg { font-weight: bold; color: #10b981; }

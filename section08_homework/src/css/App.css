@@ -1,0 +1,7 @@
+.App {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #e2e2e2;
+  font-family: 'Malgun Gothic', sans-serif;
+}

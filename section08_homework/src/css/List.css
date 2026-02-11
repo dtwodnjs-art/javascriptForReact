@@ -1,11 +1,30 @@
-.List { margin-top: 20px; }
-.search_bar { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; }
-.list_title {
+.List {
+  margin-top: 20px;
+}
+
+.search_bar {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* 제목 행과 아이템 행의 비율을 똑같이 맞춰야 정렬이 됩니다 */
+.list_header, .ScoreItem {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1.2fr 0.7fr;
-  background-color: #f1f5f9;
-  padding: 10px 0;
-  font-weight: bold;
+  /* 비율: 번호(0.5) 이름(1) 국(0.7) 영(0.7) 수(0.7) 총(0.7) 평(0.7) 날짜(1.2) 버튼(1.5) */
+  grid-template-columns: 0.5fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1.2fr 1.5fr;
+  align-items: center;
   text-align: center;
-  border-bottom: 2px solid #cbd5e1;
+}
+
+.list_header {
+  background-color: #f1f5f9;
+  padding: 12px 0;
+  font-weight: bold;
+  border-top: 2px solid #475569;
+  border-bottom: 1px solid #cbd5e1;
+  font-size: 14px;
 }

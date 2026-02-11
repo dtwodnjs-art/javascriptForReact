@@ -1,12 +1,64 @@
 .ScoreItem {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1.2fr 0.7fr;
-  padding: 12px 0;
+  padding: 15px 0;
   border-bottom: 1px solid #f1f5f9;
-  text-align: center;
-  align-items: center;
+  font-size: 14px;
 }
-.ScoreItem button { background-color: #ef4444; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-.col_name { font-weight: bold; color: #1e293b; }
+
+.ScoreItem:hover {
+  background-color: #f8fafc;
+}
+
+.col_name { font-weight: bold; }
 .col_total { font-weight: bold; color: #3b82f6; }
 .col_avg { font-weight: bold; color: #10b981; }
+
+.edit_input {
+  width: 80%;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.col_btn {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.col_btn button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.edit_btn { background-color: #f59e0b; } /* 주황색 */
+.edit_btn:hover { background-color: #d97706; }
+
+.del_btn { background-color: #ef4444; } /* 빨간색 */
+.del_btn:hover { background-color: #dc2626; }
+
+
+
+.edit_input_name {
+  width: 90%;
+  padding: 5px;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 점수 입력창 스타일 유지 */
+.edit_input {
+  width: 45px;
+  height: 25px;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 2px;
+}

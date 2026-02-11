@@ -1,18 +1,17 @@
 .Header {
   margin-bottom: 30px;
-  border-bottom: 2px solid #3b82f6; /* 하단에 포인트 라인 */
-  padding-bottom: 10px;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 15px;
 }
 
 .Header h3 {
-  color: #64748b; /* 부드러운 회색 */
+  color: #64748b;
   margin: 0;
   font-size: 16px;
-  font-weight: 500;
 }
 
 .Header h1 {
-  color: #3b82f6; /* 강조색 (파란색) */
-  margin: 5px 0 0 0;
-  font-size: 32px;
+  color: #3b82f6;
+  margin: 8px 0 0 0;
+  font-size: 28px;
 }

@@ -1,12 +1,6 @@
-const Header = ()=>{
+const Footer = () =>{
   return<>
-  
-  <h1>Header 공통부분</h1>
-  
-  
+  <h1>Footer 공통부분</h1>
   </>
-
-
 }
-
-export default Header;
+export default Footer;

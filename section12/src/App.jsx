@@ -30,18 +30,21 @@ const mockData = [
 ];
 
 //useReducer
-function reducer(state, action){
-  switch(action.type){
+function reducer(state, action) {
+  switch (action.type) {
     case "CREATE":
-      return [action.data, ...state]; 
+      return [action.data, ...state];
     case "UPDATE":
-      return state.map((item)=>{
-        item.id === action.id ? action.data : item
-      }); 
+      // map 함수 내부에 return을 명시적으로 적어줘야 해!
+      return state.map((item) =>
+        String(item.id) === String(action.data.id) 
+          ? { ...action.data } 
+          : item
+      );
     case "DELETE":
-      return state.filter((item)=>item.id !== action.id); 
-    default: 
-      return state; 
+      return state.filter((item) => String(item.id) !== String(action.id));
+    default:
+      return state;
   }
 }
 

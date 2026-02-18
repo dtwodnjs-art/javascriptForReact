@@ -1,0 +1,33 @@
+/* src/components/Header.css */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 요소들을 양 끝과 중간으로 분산 */
+  padding: 25px 0;
+  border-bottom: 2px solid #c8aa6e; /* 롤 골드 라인 */
+}
+
+/* 왼쪽 화살표 영역 */
+header .header_left {
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* 중앙 년도/월 영역 */
+header .header_center {
+  width: 60%;
+  font-size: 28px; /* 글자 크기 키움 */
+  font-weight: bold;
+  color: #f0e6d2; /* 베이지색 */
+  text-align: center;
+  text-shadow: 0 0 10px rgba(200, 170, 110, 0.5); /* 은은한 골드 광원 */
+}
+
+/* 오른쪽 화살표 영역 */
+header .header_right {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}

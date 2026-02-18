@@ -1,0 +1,71 @@
+/* src/components/DiaryItem.css */
+
+.DiaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0; /* 높이를 줄여서 한 화면에 많이 보이게 함 */
+  border-bottom: 1px solid #1e2328;
+  min-height: 80px; 
+}
+
+/* 1. 감정 이미지 구역: 크기를 대폭 줄임 */
+.DiaryItem .img_section {
+  width: 70px;  /* 이미지 박스 가로 */
+  height: 70px; /* 이미지 박스 세로 */
+  min-width: 70px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e2328;
+  cursor: pointer;
+  flex-shrink: 0; /* 크기 고정 */
+}
+
+.DiaryItem .img_section img {
+  width: 100%;  /* 박스 안에 꽉 차게 */
+  height: 100%;
+  object-fit: contain; /* 이미지 비율 유지하며 맞춤 */
+}
+
+/* 2. 정보 구역: 이미지 바로 오른쪽에 배치 */
+.DiaryItem .info_section {
+  flex-grow: 1;
+  margin-left: 20px; /* 이미지와 글자 사이 간격 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.DiaryItem .created_date {
+  font-weight: bold;
+  font-size: 20px; /* 날짜 크게 */
+  color: #c8aa6e;  /* 롤 골드 */
+  margin-bottom: 2px;
+}
+
+.DiaryItem .content {
+  font-size: 16px;
+  color: #a09b8c;
+  
+  /* 말줄임표 처리 (한 줄만 표시) */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+/* 3. 버튼 구역: 맨 오른쪽에 고정 */
+.DiaryItem .button_section {
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.DiaryItem .button_section button {
+  padding: 8px 15px;
+  font-size: 14px;
+}

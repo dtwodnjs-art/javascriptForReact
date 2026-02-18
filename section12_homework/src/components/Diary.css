@@ -1,0 +1,82 @@
+/* src/pages/Diary.css */
+
+.DiaryPage {
+  padding: 20px 0;
+}
+
+.DiaryPage article {
+  padding: 40px 0;
+}
+
+.DiaryPage section {
+  width: 100%;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.DiaryPage h4 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #c8aa6e; /* 롤 골드 색상 */
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+}
+
+/* 감정 이미지 영역: 마법공학 보관함 느낌 */
+.DiaryPage .emotion_img_wrapper {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%; /* 원형으로 변경하여 인장(Icon) 느낌 강조 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #1e2328;
+  background-color: #010a13;
+  transition: 0.3s all;
+}
+
+.DiaryPage .emotion_img_wrapper img {
+  width: 160px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+/* 감정 등급별 오라(Aura) 효과 */
+.DiaryPage .emotion_img_wrapper_1 { border-color: #00ff00; box-shadow: 0 0 30px rgba(0, 255, 0, 0.2); }
+.DiaryPage .emotion_img_wrapper_2 { border-color: #00d8ff; box-shadow: 0 0 30px rgba(0, 216, 255, 0.2); }
+.DiaryPage .emotion_img_wrapper_3 { border-color: #ffcc00; box-shadow: 0 0 30px rgba(255, 204, 0, 0.2); }
+.DiaryPage .emotion_img_wrapper_4 { border-color: #ff6600; box-shadow: 0 0 30px rgba(255, 102, 0, 0.2); }
+.DiaryPage .emotion_img_wrapper_5 { border-color: #ff004c; box-shadow: 0 0 30px rgba(255, 0, 76, 0.2); }
+
+/* 본문 영역: 룬테라 문서 느낌 */
+.DiaryPage .content_wrapper {
+  width: 100%;
+  background-color: #1e2328;
+  border: 1px solid #3c3c41;
+  border-top: 3px solid #c8aa6e; /* 상단 골드 엣지 */
+  border-radius: 4px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.DiaryPage .content_wrapper p {
+  padding: 30px;
+  text-align: left;
+  font-size: 20px;
+  color: #f0e6d2; /* 베이지색 폰트 */
+  line-height: 2;
+  white-space: pre-wrap; /* 엔터 키 반영 */
+  word-break: break-all;
+}
+
+/* 로딩 상태 */
+.DiaryPage.loading {
+  color: #c8aa6e;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 100px;
+}

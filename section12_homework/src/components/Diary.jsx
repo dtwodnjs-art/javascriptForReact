@@ -6,7 +6,7 @@ import { getStringDate } from "../util/date";
 import { getEmotionImage } from "../util/getEmotionImage";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import "./Diary.css";
+import "../css/Diary.css";
 
 const Diary = () => {
   const params = useParams();

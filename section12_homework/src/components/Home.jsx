@@ -1,4 +1,4 @@
-// src/pages/Home.jsx
+
 import { useState, useContext } from "react";
 import { DiaryStateContext } from "../App";
 import Header from "../components/Header";
@@ -9,7 +9,6 @@ const Home = () => {
   const data = useContext(DiaryStateContext);
   const [pivotDate, setPivotDate] = useState(new Date());
 
-  // 해당 월의 데이터만 추출
   const monthlyData = data.filter(
     (item) =>
       new Date(item.createdDate).getMonth() === pivotDate.getMonth() &&

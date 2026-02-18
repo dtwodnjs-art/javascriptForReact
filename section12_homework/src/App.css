@@ -1,1 +1,22 @@
+body {
+  background-color: #010a13; /* 롤 클라이언트 외곽 배경색 */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  color: #f0e6d2; /* 롤 특유의 연한 베이지색 폰트 */
+}
 
+#root {
+  background-color: #091428; /* 롤 메인 패널 색상 */
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  padding: 0 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-left: 1px solid #1e2328;
+  border-right: 1px solid #1e2328;
+}
+
+.App {
+  padding: 20px 0;
+}

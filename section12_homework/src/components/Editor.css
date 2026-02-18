@@ -1,0 +1,57 @@
+/* src/components/Editor.css */
+
+.Editor section {
+  margin-bottom: 40px;
+}
+
+.Editor h4 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #c8aa6e;
+  margin-bottom: 20px;
+}
+
+/* 감정 리스트를 5열로 배치 */
+.Editor .emotion_list_wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+/* 텍스트 입력창 키우기 */
+.Editor textarea {
+  background-color: #1e2328;
+  border: 1px solid #3c3c41;
+  color: #f0e6d2;
+  border-radius: 4px;
+  width: 100%;
+  min-height: 250px; /* 높이를 더 키움 */
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 20px; /* 글자 크기 키움 */
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.Editor textarea:focus {
+  outline: none;
+  border: 1px solid #c89b3c;
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.2);
+}
+
+/* 하단 버튼 섹션 키우기 */
+.Editor .button_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 40px;
+}
+
+.Editor .button_section button {
+  width: 48%; /* 버튼 너비를 넓게 설정 */
+  height: 60px; /* 버튼 높이 키움 */
+  font-size: 20px; /* 버튼 글자 크기 키움 */
+  font-weight: bold;
+  cursor: pointer;
+}

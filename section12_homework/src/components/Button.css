@@ -1,0 +1,28 @@
+/* src/components/Button.css 내 화살표 전용 스타일 추가 또는 수정 */
+
+.Button {
+  cursor: pointer;
+  border: 1px solid #c8aa6e;
+  background-color: #1e2328;
+  color: #c8aa6e;
+  border-radius: 4px;
+  font-family: inherit;
+  transition: 0.2s;
+}
+
+/* 화살표 버튼의 크기를 크게 만들기 위한 패딩 및 폰트 조절 */
+header .Button {
+  padding: 10px 18px; 
+  font-size: 22px; /* 화살표 크기 증가 */
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .Button:hover {
+  background-color: #c8aa6e;
+  color: #091428;
+  box-shadow: 0 0 10px rgba(200, 170, 110, 0.8);
+}

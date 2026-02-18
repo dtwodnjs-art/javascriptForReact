@@ -1,5 +1,5 @@
 import React from "react";
-import "./EmotionItem.css";
+import "../css/EmotionItem.css";
 
 const EmotionItem = ({ emotionId, emotionName, img, onClick, isSelected }) => {
   return (

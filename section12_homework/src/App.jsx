@@ -2,14 +2,14 @@ import React, { useReducer, useRef, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
-// 페이지 컴포넌트
+
 import Home from "./components/Home";
 import New from "./components/New";
 import Diary from "./components/Diary";
 import Edit from "./components/Edit";
 import Notfound from "./components/Notfound";
 
-// [예시 데이터] 롤 감정표현 아이콘에 맞춰 구성
+
 const mockData = [
   {
     id: 1,

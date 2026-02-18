@@ -1,4 +1,4 @@
-// src/components/New.jsx
+
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";

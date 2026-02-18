@@ -1,4 +1,4 @@
-import "./Editor.css";
+import "../css/Editor.css";
 import Button from "./Button";
 import EmotionItem from "./EmotionItem";
 import { useState, useEffect } from "react";

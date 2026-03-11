@@ -1,28 +1,21 @@
 import Header from "../../include/Header";
-import { useSearchParams } from "react-router-dom";
+import AddComponent from "../../components/todo/AddComponent";
 import "./AddPage.css";
 
 const AddPage = () => {
-  const [queryParam] = useSearchParams();
-  const page = queryParam.get("page") ? parseInt(queryParam.get("page")) : 1;
-  const size = queryParam.get("size") ? parseInt(queryParam.get("size")) : 10;
   return (
     <>
       <div className="main-container">
         <Header />
-
-        <p>
-          Todo Add page={page} size={size}{" "}
-        </p>
-        <main className="content-area">
-          <div className="button-wraper">
-            <button type="button" className="custom-btn-outline">
-              Add Page
-            </button>
+        <main className="list-content-area">
+          <div className="list-wrapper">
+            {/* 실제 데이터 목록이 표시되는 컴포넌트 */}
+            <AddComponent />
           </div>
         </main>
       </div>
     </>
   );
 };
+
 export default AddPage;

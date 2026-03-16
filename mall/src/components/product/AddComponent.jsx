@@ -14,7 +14,7 @@ const initState = {
 
 export default function AddComponent() {
   const [product, setProduct] = useState({ ...initState });
-  const [fetching, setFetching] = useState(false);
+  const [fectching, setFetching] = useState(false);
   const [infoModalOn, setInfoModalOn] = useState(false);
   const [result, setResult] = useState(null);
   const { moveToProductList } = useCustomMove();
@@ -22,7 +22,6 @@ export default function AddComponent() {
   const uploadRef = useRef(); // 파일 업로드 접근을 위한 Ref
 
   //이벤트처리
-
   const handleChangeProduct = (e) => {
     // 기존 객체를 복사하여 안전하게 상태 업데이트
     setProduct({
@@ -34,9 +33,9 @@ export default function AddComponent() {
   const handleClickAdd = () => {
     // 전송 시 파일 데이터를 포함하기 위해 uploadRef 사용 가능
     const files = uploadRef.current.files;
-
-    //API 서버에 전송될 FormData 생성
+    // API 서버에 전송될 FormData 생성
     const formData = new FormData();
+
     for (let i = 0; i < files.length; i++) {
       formData.append("files", files[i]);
     }
@@ -57,12 +56,12 @@ export default function AddComponent() {
 
   const closeModal = () => {
     setInfoModalOn(false);
-    moveToProductList({ page: 1 }); //모달 창이 닫히면 이동
+    moveToProductList({ page: 1 });
   };
 
   return (
     <div className="add-container">
-      {fetching ? <FetchingModal /> : <></>}
+      {fectching ? <FetchingModal /> : <></>}
       <InfoModal
         show={infoModalOn}
         title={`Product ADD RESULT`}

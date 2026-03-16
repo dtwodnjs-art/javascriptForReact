@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getOne, putOne, deleteOne } from "../../api/todoApi"; // 필요한 API 함수 가정
-import InfoModal from "../common/infoModal";
+import useCustomMove from "../../hooks/useCustomMove";
+import InfoModal from "../common/InfoModal";
 import "./ModifyComponent.css";
 
 const initState = {
@@ -10,20 +11,28 @@ const initState = {
   dueDate: "",
   complete: false,
 };
-const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
+
+const ModifyComponent = ({ tno }) => {
   const [todo, setTodo] = useState({ ...initState });
+  //모달창 isShow
   const [infoModalOn, setInfoModalOn] = useState(false);
-  const [result, setResult] = useState(null); //모달 창을 위한 상태
+  //모달창에 저장될 API 서버에서 가져온 번호
+  const [result, setResult] = useState(null);
+
+  const { moveToList, moveToRead } = useCustomMove();
   //수정컴포넌트가 로딩이될때 해당번호에 대한 api서버로부터 가져온다.
   useEffect(() => {
     getOne(tno).then((data) => setTodo(data));
   }, [tno]);
+
+  //데이타변경이 될때 todo 수정
   const handleChangeTodo = (e) => {
     setTodo({
       ...todo,
       [e.target.name]: e.target.value,
     });
   };
+  //select 문에서 처리방식
   const handleChangeTodoComplete = (e) => {
     const value = e.target.value;
     setTodo({
@@ -31,12 +40,12 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
       complete: value === "Y", // 불리언 값으로 직접 저장
     });
   };
+
   const handleClickModify = () => {
     // 실제 수정 로직 호출 (예시)
     putOne(todo).then((data) => {
       setResult(data.RESULT);
       setInfoModalOn(true);
-      moveToRead(tno);
     });
   };
 
@@ -47,22 +56,29 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
       setInfoModalOn(true);
     });
   };
+
   const closeModal = () => {
+    //모달창을 isShow 감춤
     setInfoModalOn(false);
+    // 목록으로 이동
     moveToList();
   };
+
   return (
     <div className="modify-container">
+      {/* 등록 완료 알림 모달 */}
       <InfoModal
         show={infoModalOn}
-        title={`RESULT`}
-        content={`${result}`}
+        title={"결과"}
+        content={` ${result} 완료`}
         callbackFn={closeModal}
       />
+
       <div className="form-group">
         <label className="form-label">TNO</label>
         <input className="form-control" value={tno} type="text" disabled />
       </div>
+
       <div className="form-group">
         <label className="form-label">WRITER</label>
         <input
@@ -72,6 +88,7 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
           disabled
         />
       </div>
+
       <div className="form-group">
         <label className="form-label">TITLE</label>
         <input
@@ -82,6 +99,7 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
           onChange={handleChangeTodo}
         />
       </div>
+
       <div className="form-group">
         <label className="form-label">DATE</label>
         <input
@@ -92,6 +110,7 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
           onChange={handleChangeTodo}
         />
       </div>
+
       <div className="form-group">
         <label className="form-label">COMPLETE</label>
         <select
@@ -104,6 +123,7 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
           <option value="N">Not Yet</option>
         </select>
       </div>
+
       <div className="button-group">
         <button
           className="btn btn-modify"
@@ -130,4 +150,5 @@ const ModifyComponent = ({ tno, moveToList, moveToRead }) => {
     </div>
   );
 };
+
 export default ModifyComponent;

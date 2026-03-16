@@ -16,7 +16,7 @@
 .read-wrapper {
   display: flex;
   width: 100%;
-  align-items: stretch;
+  align-items: center;
 }
 
 .read-label {
@@ -24,15 +24,17 @@
   padding: 1.5rem;
   text-align: center;
   font-weight: bold;
+  font-size: larger;
+  border: 1px solid #ddd;
   background-color: #f8fafc; /* 부드러운 배경색 추가 */
 }
 .read-value {
   width: 80%;
   padding: 1.5rem;
   text-align: center;
+  font-size: larger;
   border: 1px solid #ddd;
   border-radius: 0 4px 4px 0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 /* 버튼 영역 스타일 */

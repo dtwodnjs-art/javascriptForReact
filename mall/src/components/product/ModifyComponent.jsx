@@ -3,7 +3,7 @@ import "./ModifyComponent.css";
 const ModifyComponent = ({ pno }) => {
   return (
     <div className="modify-container">
-      <h1>Product Modify Component</h1>
+      <h1>{pno}Product Modifty Component</h1>
     </div>
   );
 };

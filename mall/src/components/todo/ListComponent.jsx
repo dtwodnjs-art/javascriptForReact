@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getList } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import PageComponent from "../common/PageComponent";
-import "./ListComponent.css"; // CSS 파일 임포트
+import "./ListComponent.css";
 
 const initState = {
   dtoList: [],
@@ -27,6 +27,7 @@ const ListComponent = () => {
       setServerData(data);
     });
   }, [page, size, refresh]);
+
   return (
     <div className="list-container">
       <table className="todo-table">

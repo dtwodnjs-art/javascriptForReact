@@ -1,17 +1,16 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Loading from "../pages/Loading";
-
-// 라우터(컨트롤러 대상이 되는 페이지를 가져와야된다.)
+//1. 라우터(컨트롤러 대상이 되는 페이지를 가져와야된다)
 const Main = lazy(() => import("../pages/MainPage"));
 const About = lazy(() => import("../pages/AboutPage"));
 const Login = lazy(() => import("../pages/LoginPage"));
-//**********todo***********
+//**** todo ****
 const List = lazy(() => import("../pages/todo/ListPage"));
 const Read = lazy(() => import("../pages/todo/ReadPage"));
-const Add = lazy(() => import("../pages/todo/AddPage"));
 const Modify = lazy(() => import("../pages/todo/ModifyPage"));
-//**********product***********
+const Add = lazy(() => import("../pages/todo/AddPage"));
+//**** product ****
 const ProductListPage = lazy(() => import("../pages/product/ListPage"));
 const ProductAddPage = lazy(() => import("../pages/product/AddPage"));
 const ProductReadPage = lazy(() => import("../pages/product/ReadPage"));
@@ -27,7 +26,7 @@ const Root = createBrowserRouter([
     ),
   },
   {
-    path: "about",
+    path: "/about",
     element: (
       <Suspense fallback={<Loading />}>
         <About />
@@ -35,13 +34,14 @@ const Root = createBrowserRouter([
     ),
   },
   {
-    path: "login",
+    path: "/login",
     element: (
       <Suspense fallback={<Loading />}>
         <Login />
       </Suspense>
     ),
   },
+  //**** todo ****
   {
     path: "/todo/list",
     element: (
@@ -59,14 +59,6 @@ const Root = createBrowserRouter([
     ),
   },
   {
-    path: "/todo/Add",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <Add />
-      </Suspense>
-    ),
-  },
-  {
     path: "/todo/modify/:tno",
     element: (
       <Suspense fallback={<Loading />}>
@@ -74,7 +66,15 @@ const Root = createBrowserRouter([
       </Suspense>
     ),
   },
-
+  {
+    path: "/todo/add",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Add />
+      </Suspense>
+    ),
+  },
+  //**** product ****
   {
     path: "/product/list",
     element: (
@@ -84,34 +84,10 @@ const Root = createBrowserRouter([
     ),
   },
   {
-    path: "/product/add",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <ProductAddPage />
-      </Suspense>
-    ),
-  },
-  {
-    path: "/product/list",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <ProductListPage />
-      </Suspense>
-    ),
-  },
-  {
-    path: "/product/read/:tno",
+    path: "/product/read/:pno",
     element: (
       <Suspense fallback={<Loading />}>
         <ProductReadPage />
-      </Suspense>
-    ),
-  },
-  {
-    path: "/product/Add",
-    element: (
-      <Suspense fallback={<Loading />}>
-        <ProductAddPage />
       </Suspense>
     ),
   },
@@ -123,6 +99,13 @@ const Root = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/product/add",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductAddPage />
+      </Suspense>
+    ),
+  },
 ]);
-
 export default Root;

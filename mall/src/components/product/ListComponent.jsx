@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { getList } from "../../api/productsApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import FetchingModal from "../common/FetchingModal";
+import { getList } from "../../api/productsApi";
 import { API_SERVER_HOST } from "../../api/todoApi";
 import PageComponent from "../common/PageComponent";
-
-import "./ListComponent.css"; // CSS 분리
+import "./ListComponent.css";
 
 const host = API_SERVER_HOST;
 
@@ -28,27 +27,32 @@ const ListComponent = () => {
   const [serverData, setServerData] = useState(initState);
   const [fetching, setFetching] = useState(false);
 
+  //API server로부터 데이타로딩
   useEffect(() => {
-    // 동기적 상태 변화로 인한 렌더링 충돌 방지
-    const timer = setTimeout(() => setFetching(true), 0);
+    // 마이크로 태스크 큐로 밀어넣어 렌더링 충돌 방지
+    const timer = setTimeout(() => {
+      setFetching(true);
+    }, 0);
 
     getList({ page, size })
       .then((data) => {
+        console.log(data);
         setServerData(data);
-        setFetching(false);
+        setFetching(false); // 데이터 로딩 완료 시 false
       })
       .catch((err) => {
+        // 에러 발생 시에도 로딩은 꺼줘야 하므로 예외 처리를 권장합니다.
         setFetching(false);
-        // exceptionHandle(err) 호출이 필요하다면 여기에 추가
+        console.error(err);
       });
-
-    return () => clearTimeout(timer);
+    clearTimeout(timer);
   }, [page, size, refresh]);
 
   return (
-    <div className="product-list-container">
-      {fetching && <FetchingModal />}
-
+    <div className="list-container">
+      <h1>Products List Component</h1>
+      {/* fetching이 true일 때만 모달을 보여줍니다. */}
+      {fetching ? <FetchingModal /> : null}
       <div className="product-grid">
         {serverData.dtoList.map((product) => (
           <div
@@ -71,16 +75,17 @@ const ListComponent = () => {
                   src={`${host}/api/products/view/s_${product.uploadFileNames[0]}`}
                 />
               ) : (
-                <span>No Image</span>
+                <img
+                  alt="product"
+                  src={`${host}/api/products/view/default.jpg}`}
+                />
               )}
             </div>
           </div>
         ))}
       </div>
-      <PageComponent
-        serverData={serverData}
-        moveToList={moveToProductList}
-      ></PageComponent>
+
+      <PageComponent serverData={serverData} moveToList={moveToProductList} />
     </div>
   );
 };

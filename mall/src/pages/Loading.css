@@ -1,7 +1,7 @@
-.text-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-  color: red;
+div.text-center { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 500px; 
+  color: red; 
 }

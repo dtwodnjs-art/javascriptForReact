@@ -5,16 +5,15 @@ import {
   useSearchParams,
   createSearchParams,
 } from "react-router-dom";
-import ReadComponent from "../../components/todo/ReadComponent";
 import { useCallback } from "react";
-import useCustomMove from "../../hooks/useCustomMove";
+import ReadComponent from "../../components/todo/ReadComponent";
+
 import "./ReadPage.css";
 
 const ReadPage = () => {
   const { tno } = useParams();
-  const navigate = useNavigate();
   const [queryParams] = useSearchParams();
-  const { moveToList, moveToModify } = useCustomMove();
+  const navigate = useNavigate();
 
   const page = queryParams.get("page") ? parseInt(queryParams.get("page")) : 1;
   const size = queryParams.get("size") ? parseInt(queryParams.get("size")) : 10;
@@ -33,13 +32,10 @@ const ReadPage = () => {
     <>
       <div className="main-container">
         <Header />
-        <ReadComponent
-          tno={tno}
-          moveToList={moveToList}
-          moveToModify={moveToModify}
-        />
+        <ReadComponent tno={tno} />
       </div>
     </>
   );
 };
+
 export default ReadPage;

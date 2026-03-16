@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getOne } from "../../api/productsApi";
+import FetchingModal from "../common/FetchingModal";
 import { API_SERVER_HOST } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
-import FetchingModal from "../common/FetchingModal";
-import "./ReadComponent.css"; // CSS 분리
+import "./ReadComponent.css";
+
+const host = API_SERVER_HOST;
 
 const initState = {
   pno: 0,
@@ -13,31 +15,25 @@ const initState = {
   uploadFileNames: [],
 };
 
-const host = API_SERVER_HOST;
-
 const ReadComponent = ({ pno }) => {
   const [product, setProduct] = useState(initState);
-  const { moveToProductList, moveToProductModify } = useCustomMove();
   const [fetching, setFetching] = useState(false);
+  const { moveToProductList, moveToProductModify } = useCustomMove();
 
   useEffect(() => {
-    // 렌더링 사이클 충돌 방지
     const timer = setTimeout(() => setFetching(true), 0);
-
     getOne(pno)
       .then((data) => {
         setProduct(data);
         setFetching(false);
       })
       .catch(() => setFetching(false));
-
-    return () => clearTimeout(timer);
+    clearTimeout(timer);
   }, [pno]);
 
   return (
     <div className="read-container">
       {fetching && <FetchingModal />}
-
       <div className="read-form-wrapper">
         <div className="read-form-group">
           <label className="read-label">PNO</label>

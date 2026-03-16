@@ -1,8 +1,6 @@
 import axios from "axios";
 import { API_SERVER_HOST } from "./todoApi";
 
-//서버주소
-const host = API_SERVER_HOST;
 const prefix = `${API_SERVER_HOST}/api/products`;
 
 export const getOne = async (pno) => {
@@ -26,13 +24,15 @@ export const postAdd = async (product) => {
   const res = await axios.post(`${prefix}/`, product, header);
   return res.data;
 };
-//http://localhost:8080/api/products/10 method =delete
+
+//http://localhost:8080/api/product/10 method =delete
 export const deleteOne = async (pno) => {
   const res = await axios.delete(`${prefix}/${pno}`);
   return res.data;
 };
+
 //http://localhost:8080/api/products/10 method = put(update)
 export const putOne = async (product) => {
-  const res = await axios.put(`${prefix}/${product.tno}`, product);
+  const res = await axios.put(`${prefix}/${product.pno}`, product);
   return res.data;
 };

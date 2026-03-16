@@ -1,7 +1,5 @@
 /* FetchingModal.css */
-
 /* 전체 화면을 덮는 배경 */
-
 .fetching-overlay {
   position: fixed;
   top: 0;

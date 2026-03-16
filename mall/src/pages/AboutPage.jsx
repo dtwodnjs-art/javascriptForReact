@@ -8,7 +8,7 @@ const AboutPage = () => {
         <Header />
 
         <main className="content-area">
-          <div className="button-wraper">
+          <div className="button-wrapper">
             <button type="button" className="custom-btn-outline">
               About Page
             </button>
@@ -18,4 +18,5 @@ const AboutPage = () => {
     </>
   );
 };
+
 export default AboutPage;

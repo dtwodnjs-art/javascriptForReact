@@ -1,103 +1,120 @@
 import "./Header.css";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-  const [isTodoOpen, setIsTodoOpen] = useState(false);
-  const [isProductOpen, setIsProductDropdwonOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
 
-  // 1. Ref를 각각 만들어줘야 함 (정의 필수!)
-  const todoRef = useRef(null);
-  const productRef = useRef(null);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+    setIsProductDropdownOpen(false);
+  };
 
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      // 2. TODO 드롭다운 외부 클릭 시 닫기
-      if (todoRef.current && !todoRef.current.contains(e.target)) {
-        setIsTodoOpen(false);
-      }
-      // 3. PRODUCT 드롭다운 외부 클릭 시 닫기
-      if (productRef.current && !productRef.current.contains(e.target)) {
-        setIsProductDropdwonOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleOutsideClick, true);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick, true);
-    };
-  }, []);
+  const toggleProductDropdown = () => {
+    setIsProductDropdownOpen(!isProductDropdownOpen);
+    setIsDropdownOpen(false);
+  };
 
   return (
-    <nav className="custom-navbar">
-      <div className="nav-container">
-        <div className="nav-left">
-          <Link to="/" className="nav-link">
-            MAIN
-          </Link>
-          <Link to="/about" className="nav-link">
-            ABOUT
-          </Link>
+    <>
+      <nav className="custom-navbar">
+        <div className="nav-container">
+          <div className="nav-left">
+            <Link to="/" className="nav-link">
+              {" "}
+              MAIN
+            </Link>
+            <Link to="/about" className="nav-link">
+              {" "}
+              ABOUT
+            </Link>
 
-          {/* TODO 드롭다운 */}
-          <div className="nav-dropdown" ref={todoRef}>
-            <button
-              className="dropdown-toggle"
-              onClick={() => setIsTodoOpen(!isTodoOpen)}
-            >
-              TODO <span className="arrow">▾</span>
-            </button>
-            {isTodoOpen && (
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to="/todo/list">LIST</Link>
-                </li>
-                <li>
-                  <Link to="/todo/read/20">READ</Link>
-                </li>
-                <li>
-                  <Link to="/todo/add">ADD</Link>
-                </li>
-                <li>
-                  <Link to="/todo/modify">MODIFY</Link>
-                </li>
-              </ul>
-            )}
+            {/* 드롭다운 영역 todod */}
+            <div className="nav-dropdown">
+              <button className="dropdown-toggle" onClick={toggleDropdown}>
+                TODO <span className="arrow">▾</span>
+              </button>
+
+              {isDropdownOpen && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/todo/list" className="nav-link">
+                      LIST
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/todo/add" className="nav-link">
+                      ADD
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/todo/read/20" className="nav-link">
+                      READ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/todo/modify" className="nav-link">
+                      MODIFY
+                    </Link>
+                  </li>
+                  <li className="divider"></li>
+                  <li>
+                    <Link to="#" className="nav-link">
+                      예비용
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+            {/* 드롭다운 영역 product */}
+            <div className="nav-dropdown">
+              <button
+                className="dropdown-toggle"
+                onClick={toggleProductDropdown}
+              >
+                PRODUCT <span className="arrow">▾</span>
+              </button>
+
+              {isProductDropdownOpen && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/product/list" className="nav-link">
+                      LIST
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product/add" className="nav-link">
+                      ADD
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product/read/20" className="nav-link">
+                      READ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/product/modify" className="nav-link">
+                      MODIFY
+                    </Link>
+                  </li>
+                  <li className="divider"></li>
+                  <li>
+                    <Link to="#" className="nav-link">
+                      예비용
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           </div>
-
-          {/* PRODUCT 드롭다운 */}
-          <div className="nav-dropdown" ref={productRef}>
-            <button
-              className="dropdown-toggle"
-              onClick={() => setIsProductDropdwonOpen(!isProductOpen)}
-            >
-              PRODUCT <span className="arrow">▾</span>
-            </button>
-            {isProductOpen && (
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to="/product/list">LIST</Link>
-                </li>
-                <li>
-                  <Link to="/product/read/20">READ</Link>
-                </li>
-                <li>
-                  <Link to="/product/add">ADD</Link>
-                </li>
-                <li>
-                  <Link to="/product/modify">MODIFY</Link>
-                </li>
-              </ul>
-            )}
+          <div className="nav-right">
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
           </div>
         </div>
-
-        <div className="nav-right">
-          <Link to="/login" className="nav-link">
-            Login
-          </Link>
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

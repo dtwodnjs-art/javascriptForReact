@@ -23,6 +23,7 @@ const useCustomMove = () => {
   // ?page=2&size=10
   const queryDefault = createSearchParams({ page, size }).toString(); //새로 추가
 
+  //++++Todo++++
   //http://~~~~~~~~~/todo/list?page=1&size=10
   const moveToList = (pageParam) => {
     let queryStr = "";
@@ -60,7 +61,37 @@ const useCustomMove = () => {
       search: queryDefault, //수정시에 기존의 쿼리 스트링 유지를 위해
     });
   };
-  return { moveToList, moveToModify, moveToRead, page, size, refresh }; //moveToModify 추가
+
+  //++++PRODUCT++++
+  //http://~~~~~~~~~/product/list?page=1&size=10
+  const moveToProductList = (pageParam) => {
+    let queryStr = "";
+    if (pageParam) {
+      const pageNum = getNum(pageParam.page, page);
+      const sizeNum = getNum(pageParam.size, size);
+      queryStr = createSearchParams({
+        page: pageNum,
+        size: sizeNum,
+      }).toString();
+    } else {
+      queryStr = queryDefault;
+    }
+    navigate({
+      pathname: `../product/list`,
+      search: queryStr,
+    });
+    setRefresh(!refresh); //추가
+  };
+
+  return {
+    moveToProductList,
+    moveToList,
+    moveToModify,
+    moveToRead,
+    page,
+    size,
+    refresh,
+  }; //moveToModify 추가
 };
 
 export default useCustomMove;

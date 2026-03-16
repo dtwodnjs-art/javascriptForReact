@@ -6,10 +6,16 @@ import Loading from "../pages/Loading";
 const Main = lazy(() => import("../pages/MainPage"));
 const About = lazy(() => import("../pages/AboutPage"));
 const Login = lazy(() => import("../pages/LoginPage"));
+//**********todo***********
 const List = lazy(() => import("../pages/todo/ListPage"));
 const Read = lazy(() => import("../pages/todo/ReadPage"));
 const Add = lazy(() => import("../pages/todo/AddPage"));
 const Modify = lazy(() => import("../pages/todo/ModifyPage"));
+//**********product***********
+const ProductListPage = lazy(() => import("../pages/product/ListPage"));
+const ProductAddPage = lazy(() => import("../pages/product/AddPage"));
+const ProductReadPage = lazy(() => import("../pages/product/ReadPage"));
+const ProductModifyPage = lazy(() => import("../pages/product/ModifyPage"));
 
 const Root = createBrowserRouter([
   {
@@ -65,6 +71,55 @@ const Root = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <Modify />
+      </Suspense>
+    ),
+  },
+
+  {
+    path: "/product/list",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductListPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/product/add",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductAddPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/product/list",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductListPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/product/read/:tno",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductReadPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/product/Add",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductAddPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/product/modify/:pno",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ProductModifyPage />
       </Suspense>
     ),
   },

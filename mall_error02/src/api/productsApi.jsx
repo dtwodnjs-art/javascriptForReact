@@ -32,8 +32,7 @@ export const deleteOne = async (pno) => {
 };
 
 //http://localhost:8080/api/products/10 method = put(update)
-export const putOne = async (pno, product) => {
-  const header = { headers: { "Content-Type": "multipart/form-data" } };
-  const res = await axios.put(`${prefix}/${pno}`, product, header);
+export const putOne = async (product) => {
+  const res = await axios.put(`${prefix}/${product.pno}`, product);
   return res.data;
 };

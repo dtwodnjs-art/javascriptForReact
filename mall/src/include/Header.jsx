@@ -1,10 +1,13 @@
 import "./Header.css";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isProductDropdownOpen, setIsProductDropdownOpen] = useState(false);
+
+  const loginState = useSelector((state) => state.loginSlice);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -67,7 +70,7 @@ export default function Header() {
                 </ul>
               )}
             </div>
-            {/* 드롭다운 영역 product */}
+            {/* 드롭다운 영역 todo :회원전용 */}
             <div className="nav-dropdown">
               <button
                 className="dropdown-toggle"
@@ -107,9 +110,10 @@ export default function Header() {
                 </ul>
               )}
             </div>
+            {loginState.email ? <></> : <></>}
           </div>
           <div className="nav-right">
-            <Link to="/login" className="nav-link">
+            <Link to="/member/login" className="nav-link">
               Login
             </Link>
           </div>

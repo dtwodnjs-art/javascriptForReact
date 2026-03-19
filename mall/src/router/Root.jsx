@@ -15,6 +15,7 @@ const ProductListPage = lazy(() => import("../pages/product/ListPage"));
 const ProductAddPage = lazy(() => import("../pages/product/AddPage"));
 const ProductReadPage = lazy(() => import("../pages/product/ReadPage"));
 const ProductModifyPage = lazy(() => import("../pages/product/ModifyPage"));
+const LoginPage = lazy(() => import("../pages/member/LoginPage"));
 
 const Root = createBrowserRouter([
   {
@@ -104,6 +105,15 @@ const Root = createBrowserRouter([
     element: (
       <Suspense fallback={<Loading />}>
         <ProductAddPage />
+      </Suspense>
+    ),
+  },
+  //*memeber */
+  {
+    path: "/member/login",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <LoginPage />
       </Suspense>
     ),
   },

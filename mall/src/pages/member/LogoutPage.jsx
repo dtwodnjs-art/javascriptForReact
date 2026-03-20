@@ -1,5 +1,5 @@
 import Header from "../../include/Header";
-import LoginComponent from "../../components/member/LogoutComponent";
+import LogoutComponent from "../../components/member/LogoutComponent";
 import "./LogoutPage.css"; // CSS 파일 임포트
 
 const LogoutPage = () => {

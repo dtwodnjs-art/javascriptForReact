@@ -37,7 +37,6 @@ textarea.modify-control {
   height: auto;
   resize: vertical;
 }
-
 /* 기존 이미지 목록 그리드 */
 .modify-image-grid {
   display: grid;

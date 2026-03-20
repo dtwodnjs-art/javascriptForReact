@@ -1,19 +1,13 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { logout } from "../../slices/loginSlice";
-import { useNavigate } from "react-router-dom";
+import useCustomLogin from "../../hooks/useCustomLogin";
 import "./LogoutComponent.css"; // CSS 파일 분리
 
 export default function LogoutComponent() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { doLogout, moveToPath } = useCustomLogin();
 
   const handleClickLogout = () => {
-    // 리덕스 로그아웃 액션 실행
-    325;
-    dispatch(logout());
-    // 메인 페이지로 이동하며 히스토리 교체 (뒤로가기 방지)
-    navigate({ pathname: "/" }, { replace: true });
+    doLogout();
+    alert("로그아웃되었습니다.");
+    moveToPath("/");
   };
 
   return (

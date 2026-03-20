@@ -1,29 +1,64 @@
-/* LoginPage.css */
-
-.login-page-container {
+/* LoginComponent.css */
+.login-form-container {
   width: 100%;
-  min-height: 80vh; /* 화면의 상당 부분을 차지하도록 설정 */
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 1.25rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
+}
+
+.input-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
   box-sizing: border-box;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
-.login-content-wrapper {
-  width: 100%;
-  max-width: 500px; /* 로그인 폼의 최대 너비 제한 */
-  margin-top: 3rem; /* mt-5 대체 */
-  padding: 40px; /* p-5 대체 */
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* 부드러운 그림자 */
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* gap-2 대체 */
+.input-field:focus {
+  border-color: #0d6efd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
 }
-/* 헤더와 로그인 컴포넌트 사이의 간격 조정 */
-.login-header-section {
+
+.login-button-wrapper {
+  margin-top: 1.5rem;
+}
+
+.btn-login-submit {
   width: 100%;
-  margin-bottom: 1rem;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0d6efd;
+  background-color: transparent;
+  border: 1px solid #0d6efd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-login-submit:hover {
+  color: #fff;
+  background-color: #0d6efd;
 }

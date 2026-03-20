@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { getOne, putOne, deleteOne } from "../../api/productsApi";
 import { API_SERVER_HOST } from "../../api/todoApi";
-import InfoModal from "../common/InfoModal";
-import "./ModifyComponent.css";
-
-import useCustomMove from "../../hooks/useCustomMove";
+import { getOne, putOne, deleteOne } from "../../api/productsApi";
 import FetchingModal from "../common/FetchingModal";
+import InfoModal from "../common/InfoModal";
+import useCustomMove from "../../hooks/useCustomMove";
+
+import "./ModifyComponent.css";
 
 const initState = {
   pno: 0,
@@ -20,16 +20,9 @@ const host = API_SERVER_HOST;
 const ModifyComponent = ({ pno }) => {
   const [product, setProduct] = useState({ ...initState });
   const [fetching, setFetching] = useState(false);
-
-  /* 수정: useCustomMove는 함수이므로 호출()이 필요합니다 */
   const { moveToProductList, moveToProductRead } = useCustomMove();
-
-  /* 수정: useState는 [값, 함수] 형태의 배열(Array)을 반환하므로 []를 사용해야 합니다 */
   const [result, setResult] = useState(null);
-
-  /* 수정: useState() 함수를 호출하고 초기값(false)을 할당해야 합니다 */
   const [infoModalOn, setInfoModalOn] = useState(false);
-
   const uploadRef = useRef();
 
   useEffect(() => {
@@ -56,13 +49,14 @@ const ModifyComponent = ({ pno }) => {
   };
 
   const handleClickModify = () => {
-    //서버에 보낼 form 생성
+    // 서버에 보낼 form 생성
     const formData = new FormData();
-    //자료 업로드 위치
+    /* 자료업로드위치 */
     const files = uploadRef.current.files;
     for (let i = 0; i < files.length; i++) {
       formData.append("files", files[i]);
     }
+
     //other data
     formData.append("pname", product.pname);
     formData.append("pdesc", product.pdesc);
@@ -73,6 +67,7 @@ const ModifyComponent = ({ pno }) => {
     for (let i = 0; i < product.uploadFileNames.length; i++) {
       formData.append("uploadFileNames", product.uploadFileNames[i]);
     }
+
     setFetching(true);
     //수정 처리
     putOne(pno, formData).then((data) => {
@@ -80,17 +75,12 @@ const ModifyComponent = ({ pno }) => {
       setFetching(false);
       setInfoModalOn(true);
     });
-
-    /* putOne 로직 구현 */
   };
-
   const handleClickDelete = () => {
     /* deleteOne 로직 구현 */
     setFetching(true);
-
-    /* 수정: .then 뒤에는 소괄호()를 사용해 화살표 함수를 작성해야 합니다 */
     deleteOne(pno).then((data) => {
-      setResult(`Deleted`);
+      setResult("Deleted");
       setFetching(false);
       setInfoModalOn(true);
     });
@@ -117,6 +107,17 @@ const ModifyComponent = ({ pno }) => {
       />
 
       <div className="modify-form">
+        <div className="modify-form-group">
+          <label className="modify-label">PNO</label>
+          <input
+            className="modify-control"
+            name="pno"
+            type="text"
+            value={product.pno}
+            readOnly="true"
+          />
+        </div>
+
         <div className="modify-form-group">
           <label className="modify-label">PNAME</label>
           <input

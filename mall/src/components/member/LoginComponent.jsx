@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import useCustomLogin from "../../hooks/useCustomLogin";
 import "./LoginComponent.css"; // CSS 분리
-import { useDispatch } from "react-redux";
-import { login } from "../../slices/loginSlice";
+import KakaoLoginComponent from "./KakaoLoginComponent";
 
 const initState = {
   email: "",
@@ -10,17 +10,29 @@ const initState = {
 
 export default function LoginComponent() {
   const [loginParam, setLoginParam] = useState({ ...initState });
-  const dispatch = useDispatch();
+  const { doLogin, moveToPath } = useCustomLogin();
 
   // 상태 업데이트 시 객체 불변성 유지
   const handleChange = (e) => {
-    setLoginParam({ ...loginParam, [e.target.name]: e.target.value });
+    setLoginParam({
+      ...loginParam,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleClickLogin = () => {
     console.log("Login Attempt:", loginParam);
-    // 여기에 Dispatch(login) 로직을 추가하면 된다.
-    dispatch(login(loginParam));
+    //dispatch(login(loginParam));
+    // 메인 페이지로 이동하며 히스토리 교체 (뒤로가기 방지)
+    doLogin(loginParam).then((data) => {
+      console.log("loginComponent = " + data.email);
+      if (data.error) {
+        alert("이메일과 패스워드를 다시 확인하세요");
+      } else {
+        alert("로그인 성공");
+        moveToPath("/");
+      }
+    });
   };
 
   return (
@@ -63,6 +75,7 @@ export default function LoginComponent() {
           로그인
         </button>
       </div>
+      <KakaoLoginComponent />
     </div>
   );
 }
